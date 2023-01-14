@@ -24,8 +24,11 @@ ps=input('Please enter a paragraph string:')
 pw=int(input('Also enter the page width:'))
 ps = ps.strip('\"')
 psl=ps.split()
-aj=appleJustify(psl,pw)
-#print(len(aj))              # number of paragraph line in the page
-
-for i in range(len(aj)):
-    print("Array [" +str(i)+"] = \"",str(aj[i]) + "\"", sep='')
+max_word_len = len(max(psl, key = len))
+if max_word_len > pw:
+    print("words longer that page width exist. please choose a valid page width.")
+else:
+    aj=appleJustify(psl,pw)
+    #print(len(aj))              # number of paragraph line in the page
+    for i in range(len(aj)):
+        print("Array [" +str(i+1)+"] = \"",str(aj[i]) + "\"", sep='')
